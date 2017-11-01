@@ -22,7 +22,7 @@ node{
 		sh 'docker images'
 	}
 	stage ('Jmeter Test'){
-	sh 'cd Jmeter-test'
+	sh 'cd Jmeter'
 		def jmeterImage = docker.build("jmeter-demo:${env.BUILD_ID}","${workspace}/Jmeter")	
 		sh 'docker images'
 	}
