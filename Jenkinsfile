@@ -4,5 +4,6 @@ node{
 	sh 'git clone https://github.com/Devops-POC/pact-test.git'
 	sh 'ls -ltr'
 	}
+}
 	
     
