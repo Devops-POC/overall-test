@@ -16,6 +16,9 @@ node{
 	}
 
 	stage ('PACT Test'){
+		sh 'cd pact-test'
+		def restImage = docker.build("pact-demo:${env.BUILD_ID}","${workspace}/pact-test")	
+		sh 'docker images'
 	}
 	stage ('Jmeter Test'){
 	}
@@ -25,5 +28,3 @@ node{
 	sh "rm -rf pact-test Rest-Assured"
 	}
 }
-	
-    
