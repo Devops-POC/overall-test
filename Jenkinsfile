@@ -7,7 +7,7 @@ node{
 	workspace = pwd() 
 	stage ('Rest-Assured Test'){
 		sh 'cd Rest-Assured'
-		def restImage = docker.build("restassured-demo:${env.BUILD_ID}","{workspace}/Rest-Assured")	
+		def restImage = docker.build("restassured-demo:${env.BUILD_ID}","${workspace}/Rest-Assured")	
 		sh 'docker images'
         /*restImage.inside {
 			sh 'pwd'
