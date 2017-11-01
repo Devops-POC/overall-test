@@ -18,12 +18,12 @@ node{
 
 	stage ('PACT Test'){
 		sh 'cd pact-test'
-		def restImage = docker.build("pact-demo:${env.BUILD_ID}","${workspace}/pact-test")	
+		def pactImage = docker.build("pact-demo:${env.BUILD_ID}","${workspace}/pact-test")	
 		sh 'docker images'
 	}
 	stage ('Jmeter Test'){
 	sh 'cd Jmeter-test'
-		def restImage = docker.build("jmeter-demo:${env.BUILD_ID}","${workspace}/Jmeter")	
+		def jmeterImage = docker.build("jmeter-demo:${env.BUILD_ID}","${workspace}/Jmeter")	
 		sh 'docker images'
 	}
 	
