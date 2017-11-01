@@ -19,6 +19,11 @@ node{
 	}
 	stage ('Jmeter Test'){
 	}
+	
+	stage ('clenaup workspace')
+	{
+	sh "rm -rf pact-test Rest-Assured"
+	}
 }
 	
     
