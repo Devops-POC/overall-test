@@ -2,6 +2,7 @@ node{
 	stage ('checkout scm'){
 	sh 'git clone https://github.com/Devops-POC/Rest-Assured.git'
 	sh 'git clone https://github.com/Devops-POC/pact-test.git'
+	sh 'git clone https://github.com/Devops-POC/Jmeter.git'
 	sh 'ls -ltr'
 	}
 	workspace = pwd() 
@@ -21,6 +22,9 @@ node{
 		sh 'docker images'
 	}
 	stage ('Jmeter Test'){
+	sh 'cd Jmeter-test'
+		def restImage = docker.build("jmeter-demo:${env.BUILD_ID}","${workspace}/Jmeter")	
+		sh 'docker images'
 	}
 	
 	stage ('clenaup workspace')
