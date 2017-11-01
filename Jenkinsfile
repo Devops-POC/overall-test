@@ -29,6 +29,6 @@ node{
 	
 	stage ('clenaup workspace')
 	{
-	sh "rm -rf pact-test Rest-Assured"
+	sh "rm -rf pact-test Rest-Assured Jmeter"
 	}
 }
