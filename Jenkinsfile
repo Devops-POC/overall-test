@@ -11,6 +11,8 @@ node{
 		sh 'cd Rest-Assured'
 		def restImage = docker.build("restassured-demo:${env.BUILD_ID}","${workspace}/Rest-Assured")	
 		sh 'docker images'
+		sh "rm -rf Rest-Assured"
+
         /*restImage.inside {
 			sh 'pwd'
 			sh 'ls -ltr'	
@@ -35,6 +37,6 @@ node{
 	
 	stage ('clenaup workspace')
 	{
-	sh "rm -rf pact-test Rest-Assured Jmeter Cucumber"
+	sh "rm -rf pact-test Jmeter Cucumber"
 	}
 }
