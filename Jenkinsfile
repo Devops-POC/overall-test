@@ -3,6 +3,7 @@ node{
 	sh 'git clone https://github.com/Devops-POC/Rest-Assured.git'
 	sh 'git clone https://github.com/Devops-POC/pact-test.git'
 	sh 'git clone https://github.com/Devops-POC/Jmeter.git'
+	sh 'git clone https://github.com/Devops-POC/Cucumber.git'
 	sh 'ls -ltr'
 	}
 	workspace = pwd() 
@@ -28,7 +29,7 @@ node{
 	}
 	stage ('Cucumber Test'){
 	sh 'cd Cucumber'
-		def jmeterImage = docker.build("cucumber-demo:${env.BUILD_ID}","${workspace}/Cucumber")	
+		def cucumberImage = docker.build("cucumber-demo:${env.BUILD_ID}","${workspace}/Cucumber")	
 		sh 'docker images'
 	}
 	
