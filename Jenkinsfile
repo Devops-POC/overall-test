@@ -23,20 +23,23 @@ node{
 		sh 'cd pact-test'
 		def pactImage = docker.build("pact-demo:${env.BUILD_ID}","${workspace}/pact-test")	
 		sh 'docker images'
+		sh "rm -rf pact-test"
 	}
 	stage ('Jmeter Test'){
 	sh 'cd Jmeter'
 		def jmeterImage = docker.build("jmeter-demo:${env.BUILD_ID}","${workspace}/Jmeter")	
 		sh 'docker images'
+		sh "rm -rf Jmeter"
 	}
 	stage ('Cucumber Test'){
 	sh 'cd Cucumber'
 		def cucumberImage = docker.build("cucumber-demo:${env.BUILD_ID}","${workspace}/Cucumber")	
 		sh 'docker images'
+		sh "rm -rf Cucumber"
 	}
 	
-	stage ('clenaup workspace')
-	{
-	sh "rm -rf pact-test Jmeter Cucumber"
-	}
+	//stage ('clenaup workspace')
+	//{
+	//sh "rm -rf pact-test Jmeter Cucumber"
+	//}
 }
