@@ -26,6 +26,11 @@ node{
 		def jmeterImage = docker.build("jmeter-demo:${env.BUILD_ID}","${workspace}/Jmeter")	
 		sh 'docker images'
 	}
+	stage ('Cucumber Test'){
+	sh 'cd Cucumber'
+		def jmeterImage = docker.build("cucumber-demo:${env.BUILD_ID}","${workspace}/Cucumber")	
+		sh 'docker images'
+	}
 	
 	stage ('clenaup workspace')
 	{
