@@ -11,7 +11,7 @@ node{
 		sh 'cd Rest-Assured'
 		def restImage = docker.build("restassured-demo:${env.BUILD_ID}","${workspace}/Rest-Assured")	
 		
-		sh "docker run -it restassured-demo:${env.BUILD_ID}"
+		sh "docker run -i restassured-demo:${env.BUILD_ID}"
 		sh 'docker ps -a | grep \\"restassured-demo:${env.BUILD_ID}\\" | awk '{ print $1 }' > outFile'
 		containerID = readFile 'outFile'
 		echo "The current container id is ${containerID}"
