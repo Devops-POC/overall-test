@@ -12,7 +12,7 @@ node{
 		def restImage = docker.build("restassured-demo:${env.BUILD_ID}","${workspace}/Rest-Assured")	
 		echo restImage
 		sh "docker run -it restassured-demo:${env.BUILD_ID}"
-		sh "docker ps -a | grep restassured-demo:${env.BUILD_ID} | awk '{ print $1 }' > outFile"
+		sh 'docker ps -a | grep \\"restassured-demo:${env.BUILD_ID}\\" | awk '{ print $1 }' > outFile'
 		containerID = readFile 'outFile'
 		echo "The current container id is ${containerID}"
 		sh "docker start ${containerID}"
