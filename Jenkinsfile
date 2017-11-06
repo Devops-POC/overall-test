@@ -12,8 +12,11 @@ node{
 		def restImage = docker.build("restassured-demo:${env.BUILD_ID}","${workspace}/Rest-Assured")	
 		
 		sh "docker run -i restassured-demo:${env.BUILD_ID}"
-		sh "docker ps -a | grep \\"restassured-demo:${env.BUILD_ID}\\" | awk \'{ print $1 }\' > outFile"
-		containerID = readFile 'outFile'
+		//sh "docker ps -a | grep \\"restassured-demo:${env.BUILD_ID}\\" | awk \'{ print $1 }\' > outFile"
+		def containerID = 'docker ps -a'.execute() | 'grep restassured-demo:${env.BUILD_ID}'.execute() | ['awk', '{ print $1 }'].execute()
+		containerID.waitFor()
+		println containerID.text
+		//containerID = readFile 'outFile'
 		echo "The current container id is ${containerID}"
 		sh "docker start ${containerID}"
 		sh "docker cp ${containerID}:/Rest-Assured/target/surefire-reports/emailable-report.html ."
